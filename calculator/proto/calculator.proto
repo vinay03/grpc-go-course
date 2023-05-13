@@ -1,0 +1,53 @@
+syntax="proto3";
+
+package calculator;
+
+message AvgRequest {
+	uint32 number = 1;
+}
+
+message AvgResponse {
+	float Result = 1;
+}
+
+message PrimeRequest {
+	uint32 number = 1;
+}
+
+message PrimeResponse {
+	uint32 result = 1;
+}
+
+message SumRequest {
+	int32 first = 1;
+	int32 second = 2;
+}
+
+message SumResponse {
+	int32 result = 1;
+}
+
+message NumberRequest {
+	uint32 number = 1;
+}
+message NumberResponse {
+	uint32 Result = 1;
+}
+
+message SqrtRequest {
+	int32 number = 1; // could be uint32
+}
+
+message SqrtResponse {
+	double result = 1;
+}
+
+option go_package = "github.com/vinay03/grpc-go-course/calculator/proto";
+
+service CalculatorService {
+	rpc Avg(stream AvgRequest) returns (AvgResponse);
+	rpc Prime(PrimeRequest) returns (stream PrimeResponse);
+	rpc GetSum(SumRequest) returns (SumResponse);
+	rpc Max(stream NumberRequest) returns (stream NumberResponse);
+	rpc Sqrt(SqrtRequest) returns (SqrtResponse);
+}
