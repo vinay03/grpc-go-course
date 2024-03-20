@@ -5,3 +5,5 @@ bin/*
 */*.csr
 */*.pem
 */*.pem
+
+*/proto/*.pb.go
